@@ -3,7 +3,7 @@ package S01T03N02Ex02AlbertMartin;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Restaurant implements Comparator<Restaurant> {
+public class Restaurant implements Comparator<Restaurant>{
 
     private String name;
     private int punctuation;
@@ -21,19 +21,19 @@ public class Restaurant implements Comparator<Restaurant> {
         return punctuation;
     }
 
-   @Override
+    //Fent servir l'inteface Comparator, ordenem la llista alfabèticament.
+    //Si dos restaurants tenen el mateix nom, els ordenem per puntuació en sentit ascendent.
+    @Override
     public int compare(Restaurant r1, Restaurant r2) {
 
+        int resultComparison;
         int resultName = r1.name.compareTo(r2.name);
-        int resultPunctuation = String.valueOf(r2.getPunctuation()).compareTo(String.valueOf(r1.getPunctuation()));
+        int resultPunctuation = String.valueOf(r1.getPunctuation()).compareTo(String.valueOf(r2.getPunctuation()));
 
-        if (resultName != 0) {
-            return resultName;
-        }
-        else {
-            return resultPunctuation;
-        }
+        if (resultName != 0) resultComparison = resultName;
+        else resultComparison = resultPunctuation;
 
+        return resultComparison;
     }
 
     @Override
